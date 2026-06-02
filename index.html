@@ -17,12 +17,12 @@ body {
   background: #000;
   color: #fff;
   font-family: Inter, Arial, sans-serif;
-  display: flex;
-  justify-content: center;
+  overflow-x: hidden;
 }
 .page {
   width: 100%;
   max-width: 728px;
+  margin: 0 auto;
   background: #000;
   min-height: 100vh;
   overflow: hidden;
@@ -78,21 +78,24 @@ body {
   position: relative;
   container-type: inline-size;
   line-height: 1;
+  display: grid;
+  background: #000;
 }
 .heroBg {
-  display: block;
+  grid-area: 1 / 1;
+  align-self: start;
   width: 100%;
   height: auto;
-}
-.heroOverlay {
-  position: absolute;
-  inset: 0;
+  z-index: 0;
 }
 .heroCopy {
-  position: absolute;
-  left: 3.7%;
-  top: 3.6%;
-  width: 58%;
+  grid-area: 1 / 1;
+  align-self: start;
+  position: relative;
+  z-index: 1;
+  margin-left: 3.7cqw;
+  max-width: 58%;
+  padding: 2.8cqw 0 3cqw;
 }
 .badge {
   display: inline-flex;
@@ -187,6 +190,7 @@ body {
 .shield,
 .years {
   position: absolute;
+  z-index: 1;
   text-align: center;
 }
 .shield {
@@ -403,6 +407,9 @@ body {
   }
   .brands p {
     font-size: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
   }
   .cta {
     gap: 14px;
@@ -426,29 +433,27 @@ body {
 
   <section class="hero">
     <img class="heroBg" src="hero_clean.jpg" alt="Servis bojlera Beograd" />
-    <div class="heroOverlay">
-      <div class="heroCopy">
-        <div class="badge"><span class="clock">◷</span> <b>HITNE INTERVENCIJE</b> 00-24</div>
-        <h1>SERVIS <span>BOJLERA</span><em>BEOGRAD</em></h1>
-        <p class="lead">Brza reakcija. Kvalitetan servis.<br/>Garancija na rad i ugrađene delove.</p>
-        <ul class="feats">
-          <li><b>✓</b>Dolazak za 30-60 min</li>
-          <li><b>✓</b>Svi delovi na stanju</li>
-          <li><b>✓</b>Garancija na rad</li>
-          <li><b>✓</b>Ceo Beograd</li>
-        </ul>
-        <a class="heroCall" href="tel:+381613112073">☎ 061/311-20-73</a>
-        <div class="trust"><span>♢</span> POUZDAN SERVIS VEĆ 20+ GODINA</div>
-      </div>
-      <div class="shield">
-        <div class="chk">✓</div>
-        <b>GARANCIJA<br/>NA RAD</b>
-      </div>
-      <div class="years">
-        <small>VIŠE OD</small>
-        <b>20</b>
-        <span>GODINA<br/>ISKUSTVA</span>
-      </div>
+    <div class="heroCopy">
+      <div class="badge"><span class="clock">◷</span> <b>HITNE INTERVENCIJE</b> 00-24</div>
+      <h1>SERVIS <span>BOJLERA</span><em>BEOGRAD</em></h1>
+      <p class="lead">Brza reakcija. Kvalitetan servis.<br/>Garancija na rad i ugrađene delove.</p>
+      <ul class="feats">
+        <li><b>✓</b>Dolazak za 30-60 min</li>
+        <li><b>✓</b>Svi delovi na stanju</li>
+        <li><b>✓</b>Garancija na rad</li>
+        <li><b>✓</b>Ceo Beograd</li>
+      </ul>
+      <a class="heroCall" href="tel:+381613112073">☎ 061/311-20-73</a>
+      <div class="trust"><span>♢</span> POUZDAN SERVIS VEĆ 20+ GODINA</div>
+    </div>
+    <div class="shield">
+      <div class="chk">✓</div>
+      <b>GARANCIJA<br/>NA RAD</b>
+    </div>
+    <div class="years">
+      <small>VIŠE OD</small>
+      <b>20</b>
+      <span>GODINA<br/>ISKUSTVA</span>
     </div>
   </section>
 
