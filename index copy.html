@@ -76,190 +76,262 @@ body {
 }
 .hero {
   position: relative;
-  container-type: inline-size;
-  line-height: 1;
+  min-height: 555px;
+  padding: 26px 28px 18px;
+  background:
+    radial-gradient(circle at 75% 44%, rgba(255, 98, 0, 0.28), transparent 33%),
+    linear-gradient(#050505, #020202);
 }
-.heroBg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.heroOverlay {
+.hero:after {
+  content: "";
   position: absolute;
   inset: 0;
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.72) 38%,
+    rgba(0, 0, 0, 0.16) 72%,
+    #000 100%
+  );
 }
-.heroCopy {
-  position: absolute;
-  left: 3.7%;
-  top: 3.6%;
-  width: 58%;
+.heroInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 52% 48%;
 }
 .badge {
   display: inline-flex;
-  align-items: center;
-  gap: 1cqw;
-  border: 0.14cqw solid rgba(255, 98, 0, 0.65);
-  border-radius: 2.6cqw;
-  padding: 1.05cqw 1.9cqw;
-  font-size: 1.85cqw;
+  gap: 8px;
+  border: 1px solid rgba(255, 98, 0, 0.65);
+  border-radius: 18px;
+  padding: 8px 13px;
+  font-size: 13px;
   font-weight: 900;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.65);
+  margin-bottom: 17px;
 }
-.badge .clock,
-.badge b {
-  color: #ff6200;
-}
-.heroCopy h1 {
-  margin: 2.7cqw 0 0;
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: -0.35cqw;
-  font-size: 8.9cqw;
-  line-height: 0.96;
-}
-.heroCopy h1 span {
-  display: block;
-  color: #ff6200;
-}
-.heroCopy h1 em {
-  display: block;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 7.5cqw;
-}
-.lead {
-  margin: 2.7cqw 0 0;
-  font-size: 2.3cqw;
-  line-height: 1.45;
-  color: #e8e8e8;
-  font-weight: 500;
-}
-.feats {
-  list-style: none;
-  padding: 0;
-  margin: 2.6cqw 0 0;
-}
-.feats li {
-  display: flex;
-  align-items: center;
-  gap: 1.3cqw;
-  font-size: 2.35cqw;
-  line-height: 2.1;
-  font-weight: 600;
-}
-.feats li b {
-  width: 2.7cqw;
-  height: 2.7cqw;
-  border: 0.2cqw solid #ff6200;
-  border-radius: 50%;
-  display: inline-grid;
-  place-items: center;
-  color: #ff6200;
-  font-size: 1.5cqw;
-  flex: none;
-}
-.heroCall {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.6cqw;
-  margin-top: 2.8cqw;
-  background: linear-gradient(#ff7415, #ff5600);
-  padding: 2.1cqw 3.8cqw;
-  border-radius: 1.5cqw;
-  color: #fff;
-  text-decoration: none;
-  font-size: 3.9cqw;
-  font-weight: 900;
-  box-shadow: 0 0 4cqw rgba(255, 98, 0, 0.45);
-}
-.trust {
-  display: flex;
-  align-items: center;
-  gap: 1cqw;
-  margin-top: 2.6cqw;
-  color: #ddd;
-  font-size: 1.9cqw;
-  font-weight: 800;
-}
-.trust span {
-  color: #ff6200;
-}
-.shield,
-.years {
-  position: absolute;
-  text-align: center;
-}
-.shield {
-  right: 3.4%;
-  top: 8.4%;
-  width: 18%;
-  aspect-ratio: 112 / 128;
-  background: #888;
-  clip-path: polygon(50% 0, 100% 11%, 100% 52%, 50% 100%, 0 52%, 0 11%);
-  filter: drop-shadow(0 0 3cqw rgba(255, 98, 0, 0.5));
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  padding-top: 2.9cqw;
-}
-.shield::before {
-  content: "";
-  position: absolute;
-  inset: 0.34cqw;
-  background: linear-gradient(150deg, #262626, #050505 65%);
-  clip-path: polygon(50% 0, 100% 11%, 100% 52%, 50% 100%, 0 52%, 0 11%);
-}
-.shield .chk {
-  position: relative;
-  width: 4.4cqw;
-  height: 4.4cqw;
-  margin: 0 auto 0.9cqw;
-  border-radius: 1.4cqw;
-  border: 0.3cqw solid #ff6200;
-  display: grid;
-  place-items: center;
-  color: #ff6200;
-  font-size: 2.5cqw;
-}
-.shield b {
-  position: relative;
-  display: block;
-  font-size: 1.8cqw;
-  letter-spacing: -0.05cqw;
-  color: #fff;
-  line-height: 1.3;
-}
-.years {
-  right: 2.6%;
-  top: 39.5%;
-  width: 18.6%;
-  aspect-ratio: 1;
-  background: linear-gradient(145deg, #1f1f1f, #050505);
-  border: 0.3cqw solid rgba(255, 98, 0, 0.8);
-  border-radius: 50%;
-  box-shadow: 0 0 3cqw rgba(255, 98, 0, 0.45);
-  display: grid;
-  align-content: center;
-}
-.years small {
-  font-size: 1.65cqw;
-  font-weight: 800;
-}
-.years b {
-  display: block;
-  color: #ff6200;
-  font-size: 6.6cqw;
-  line-height: 0.9;
-}
-.years span {
-  font-size: 1.6cqw;
-  font-weight: 800;
-  line-height: 1.15;
-}
+.badge b,
 .eyebrow,
 .service span,
 .stat div {
   color: #ff6200;
+}
+h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -2px;
+  font-size: 58px;
+  line-height: 0.94;
+}
+h1 span {
+  display: block;
+  color: #ff6200;
+}
+h1 em {
+  display: block;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 51px;
+}
+.copy {
+  position: relative;
+  z-index: 2;
+}
+.copy p {
+  font-size: 16px;
+  line-height: 1.45;
+  color: #e5e5e5;
+}
+.copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.copy li {
+  display: flex;
+  gap: 9px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.copy li b {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #ff6200;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  color: #ff6200;
+  font-size: 13px;
+  margin-top: 4px;
+}
+.heroCall {
+  display: inline-flex;
+  gap: 13px;
+  background: linear-gradient(#ff7415, #ff5600);
+  padding: 15px 27px;
+  border-radius: 11px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 27px;
+  font-weight: 900;
+  box-shadow: 0 0 30px rgba(255, 98, 0, 0.45);
+}
+.trust {
+  margin-top: 18px;
+  color: #ddd;
+  font-size: 13px;
+  font-weight: 800;
+}
+.visual {
+  position: relative;
+  z-index: 1;
+  height: 510px;
+  margin-left: -42px;
+}
+.temple {
+  position: absolute;
+  left: -30px;
+  top: 58px;
+  width: 270px;
+  height: 295px;
+  background: radial-gradient(
+    circle at 50% 46%,
+    rgba(255, 170, 70, 0.3),
+    transparent 42%
+  );
+}
+.temple:before {
+  content: "";
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  width: 170px;
+  height: 190px;
+  border-radius: 55% 55% 12px 12px;
+  background: linear-gradient(#c9b27b, #674624 55%, #15100d);
+  clip-path: polygon(
+    50% 0,
+    58% 18%,
+    82% 25%,
+    82% 90%,
+    18% 90%,
+    18% 25%,
+    42% 18%
+  );
+}
+.boiler {
+  position: absolute;
+  right: 28px;
+  top: 8px;
+  width: 205px;
+  height: 328px;
+  border-radius: 18px 18px 12px 12px;
+  background: linear-gradient(
+    90deg,
+    #070707,
+    #252525 35%,
+    #070707 70%,
+    #1c1c1c
+  );
+  box-shadow: 0 0 45px rgba(255, 98, 0, 0.7);
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+.boiler:before {
+  content: "ARISTON";
+  position: absolute;
+  top: 143px;
+  left: 75px;
+  font-size: 8px;
+  color: #ddd;
+  font-weight: 800;
+}
+.screen {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  transform: translateX(-50%);
+  width: 105px;
+  height: 76px;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 18px;
+  font-size: 30px;
+  font-weight: 900;
+}
+.pipes {
+  position: absolute;
+  bottom: -35px;
+  left: 62px;
+  display: flex;
+  gap: 22px;
+}
+.pipes i {
+  display: block;
+  width: 9px;
+  height: 53px;
+  background: #090909;
+  border: 1px solid #333;
+  border-radius: 0 0 10px 10px;
+}
+.podium {
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 284px;
+  height: 92px;
+  border-radius: 50%;
+  background: #050505;
+  border: 1px solid rgba(255, 98, 0, 0.8);
+  box-shadow:
+    0 0 38px rgba(255, 98, 0, 0.85),
+    inset 0 0 27px rgba(255, 98, 0, 0.3);
+}
+.shield,
+.years {
+  position: absolute;
+  right: -12px;
+  background: linear-gradient(145deg, #1b1b1b, #050505);
+  border: 2px solid #777;
+  box-shadow: 0 0 28px rgba(255, 98, 0, 0.45);
+  text-align: center;
+}
+.shield {
+  top: 62px;
+  width: 108px;
+  height: 120px;
+  border-radius: 24px 24px 38px 38px;
+  padding-top: 18px;
+  color: #ff6200;
+  font-size: 25px;
+}
+.shield b {
+  font-size: 13px;
+  color: #fff;
+}
+.years {
+  top: 226px;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  border-color: rgba(255, 98, 0, 0.8);
+  padding-top: 18px;
+}
+.years small {
+  font-size: 12px;
+}
+.years b {
+  display: block;
+  color: #ff6200;
+  font-size: 48px;
+  line-height: 0.9;
+}
+.years span {
+  font-size: 12px;
+  font-weight: 800;
 }
 .section {
   padding: 0 22px 10px;
@@ -324,7 +396,7 @@ body {
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 30px;
 }
 .stat {
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -352,8 +424,8 @@ body {
 .cta {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 18px 22px 10px;
+  gap: 32px;
+  padding: 18px 28px 10px;
 }
 .cta a {
   height: 76px;
@@ -395,6 +467,27 @@ body {
   .brandText {
     font-size: 17px;
   }
+  .hero {
+    padding-left: 24px;
+    padding-right: 18px;
+  }
+  .heroInner {
+    grid-template-columns: 55% 45%;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  h1 em {
+    font-size: 41px;
+  }
+  .visual {
+    margin-left: -62px;
+    transform: scale(0.92);
+    transform-origin: top right;
+  }
+  .heroCall {
+    font-size: 21px;
+  }
   .service {
     grid-template-columns: 1fr;
   }
@@ -425,29 +518,29 @@ body {
   </header>
 
   <section class="hero">
-    <img class="heroBg" src="hero_clean.jpg" alt="Servis bojlera Beograd" />
-    <div class="heroOverlay">
-      <div class="heroCopy">
-        <div class="badge"><span class="clock">◷</span> <b>HITNE INTERVENCIJE</b> 00-24</div>
+    <div class="heroInner">
+      <div class="copy">
+        <div class="badge">◷ <b>HITNE INTERVENCIJE</b> 00-24</div>
         <h1>SERVIS <span>BOJLERA</span><em>BEOGRAD</em></h1>
-        <p class="lead">Brza reakcija. Kvalitetan servis.<br/>Garancija na rad i ugrađene delove.</p>
-        <ul class="feats">
+        <p>Brza reakcija. Kvalitetan servis.<br/>Garancija na rad i ugrađene delove.</p>
+        <ul>
           <li><b>✓</b>Dolazak za 30-60 min</li>
           <li><b>✓</b>Svi delovi na stanju</li>
           <li><b>✓</b>Garancija na rad</li>
           <li><b>✓</b>Ceo Beograd</li>
         </ul>
         <a class="heroCall" href="tel:+381613112073">☎ 061/311-20-73</a>
-        <div class="trust"><span>♢</span> POUZDAN SERVIS VEĆ 20+ GODINA</div>
+        <div class="trust">♢ POUZDAN SERVIS VEĆ 20+ GODINA</div>
       </div>
-      <div class="shield">
-        <div class="chk">✓</div>
-        <b>GARANCIJA<br/>NA RAD</b>
-      </div>
-      <div class="years">
-        <small>VIŠE OD</small>
-        <b>20</b>
-        <span>GODINA<br/>ISKUSTVA</span>
+      <div class="visual">
+        <div class="temple"></div>
+        <div class="podium"></div>
+        <div class="boiler">
+          <div class="screen">60</div>
+          <div class="pipes"><i></i><i></i><i></i></div>
+        </div>
+        <div class="shield">✓<br/><b>GARANCIJA<br/>NA RAD</b></div>
+        <div class="years"><small>VIŠE OD</small><b>20</b><span>GODINA<br/>ISKUSTVA</span></div>
       </div>
     </div>
   </section>
