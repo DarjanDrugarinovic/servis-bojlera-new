@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servis bojlera — izaberite lokaciju</title>
+  <title>Servis Metalac bojlera — izaberite</title>
   <style>
     :root, [data-theme="light"] {
       --bg: #f4f6fa;
@@ -77,6 +77,8 @@
     .search-card .body { flex: 1; }
     .search-card .title { display: block; font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
     .search-card .desc { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 3px; }
+    .back { display: inline-block; margin-top: 8px; color: var(--muted); font-size: 0.9rem; }
+    .back:hover { color: var(--text); }
     .theme-toggle {
       position: fixed;
       bottom: 22px;
@@ -106,45 +108,31 @@
 <div class="wrap">
 
   <header>
-    <h1>Servis bojlera</h1>
-    <div class="date">izaberite lokaciju ili sekciju</div>
+    <h1>Servis Metalac bojlera</h1>
+    <div class="date">izaberite verziju</div>
   </header>
 
   <div class="links">
 
-    <a class="search-card" href="beograd/index.html">
-      <span class="num">BG</span>
+    <a class="search-card" href="ai-pozadina/index.html">
+      <span class="num">1</span>
       <span class="body">
-        <span class="title">Beograd</span>
-        <span class="desc">Servis bojlera Beograd — hitne intervencije, dolazak za 30–60 min.</span>
+        <span class="title">AI pozadina</span>
+        <span class="desc">Verzija sa AI generisanom pozadinom.</span>
       </span>
     </a>
 
-    <a class="search-card" href="metalac/index.html">
-      <span class="num">M</span>
+    <a class="search-card" href="ai-sajt/index.html">
+      <span class="num">2</span>
       <span class="body">
-        <span class="title">Metalac</span>
-        <span class="desc">Servis Metalac bojlera — AI pozadina i AI sajt verzije.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="kapilarni-termostat/index.html">
-      <span class="num">KT</span>
-      <span class="body">
-        <span class="title">Kapilarni termostat</span>
-        <span class="desc">Zamena i servis kapilarnog termostata.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="seo/index.html">
-      <span class="num">SEO</span>
-      <span class="body">
-        <span class="title">SEO / Google Ads</span>
-        <span class="desc">Screenshotovi podešavanja kampanje (sitelinks, preporuke).</span>
+        <span class="title">AI sajt</span>
+        <span class="desc">AI generisani sajt.</span>
       </span>
     </a>
 
   </div>
+
+  <a class="back" href="../index.html">&larr; Nazad</a>
 
 </div>
 

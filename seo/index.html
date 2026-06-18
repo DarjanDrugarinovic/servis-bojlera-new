@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servis bojlera — izaberite lokaciju</title>
+  <title>SEO / Google Ads — Servis bojlera</title>
   <style>
     :root, [data-theme="light"] {
       --bg: #f4f6fa;
@@ -13,9 +13,6 @@
       --text: #1c2128;
       --muted: #5a6675;
       --accent: #1565d8;
-      --gold: #b8860b;
-      --green: #1a8a4a;
-      --red: #d93636;
       --hover: #f0f3f8;
     }
     [data-theme="dark"] {
@@ -26,9 +23,6 @@
       --text: #e6e8ec;
       --muted: #9aa3b2;
       --accent: #4fa3ff;
-      --gold: #ffd24a;
-      --green: #4ade80;
-      --red: #f87171;
       --hover: #20242e;
     }
     * { box-sizing: border-box; }
@@ -46,37 +40,57 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .links { display: flex; flex-direction: column; gap: 18px; margin: 32px 0; }
-    a.search-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 22px;
+    .carousel {
+      position: relative;
+      margin: 32px 0 0;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
+      overflow: hidden;
       box-shadow: 0 1px 6px rgba(0,0,0,0.10);
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.15s, border-color 0.15s;
     }
-    a.search-card:hover { background: var(--hover); text-decoration: none; }
-    .search-card .num {
-      flex-shrink: 0;
-      display: inline-flex;
+    .slides { display: flex; transition: transform 0.4s ease; }
+    .slides img {
+      min-width: 100%;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 2.4em;
-      height: 2.4em;
-      background: var(--card2);
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--gold);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+      transition: border-color 0.15s, background 0.15s;
     }
-    .search-card .body { flex: 1; }
-    .search-card .title { display: block; font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
-    .search-card .desc { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 3px; }
+    .nav:hover { border-color: var(--accent); background: var(--hover); }
+    .prev { left: 14px; }
+    .next { right: 14px; }
+    .dots { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .dot.active { background: var(--accent); }
+    .back { display: inline-block; margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+    .back:hover { color: var(--text); }
     .theme-toggle {
       position: fixed;
       bottom: 22px;
@@ -106,45 +120,22 @@
 <div class="wrap">
 
   <header>
-    <h1>Servis bojlera</h1>
-    <div class="date">izaberite lokaciju ili sekciju</div>
+    <h1>SEO / Google Ads</h1>
+    <div class="date">screenshotovi podešavanja kampanje</div>
   </header>
 
-  <div class="links">
-
-    <a class="search-card" href="beograd/index.html">
-      <span class="num">BG</span>
-      <span class="body">
-        <span class="title">Beograd</span>
-        <span class="desc">Servis bojlera Beograd — hitne intervencije, dolazak za 30–60 min.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="metalac/index.html">
-      <span class="num">M</span>
-      <span class="body">
-        <span class="title">Metalac</span>
-        <span class="desc">Servis Metalac bojlera — AI pozadina i AI sajt verzije.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="kapilarni-termostat/index.html">
-      <span class="num">KT</span>
-      <span class="body">
-        <span class="title">Kapilarni termostat</span>
-        <span class="desc">Zamena i servis kapilarnog termostata.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="seo/index.html">
-      <span class="num">SEO</span>
-      <span class="body">
-        <span class="title">SEO / Google Ads</span>
-        <span class="desc">Screenshotovi podešavanja kampanje (sitelinks, preporuke).</span>
-      </span>
-    </a>
-
+  <div class="carousel">
+    <div class="slides" id="slides">
+      <img src="1.jpg" alt="Fotografija 1">
+      <img src="2.jpg" alt="Fotografija 2">
+      <img src="3.jpg" alt="Fotografija 3">
+    </div>
+    <button class="nav prev" id="prev" aria-label="Prethodna">&#10094;</button>
+    <button class="nav next" id="next" aria-label="Sledeća">&#10095;</button>
   </div>
+  <div class="dots" id="dots"></div>
+
+  <a class="back" href="../index.html">&larr; Nazad</a>
 
 </div>
 
@@ -170,6 +161,34 @@
       btn.addEventListener('click', function () {
         apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
       });
+    })();
+
+    (function () {
+      var slides = document.getElementById('slides');
+      var total = slides.children.length;
+      var dotsWrap = document.getElementById('dots');
+      var index = 0;
+
+      for (var i = 0; i < total; i++) {
+        (function (n) {
+          var dot = document.createElement('button');
+          dot.className = 'dot' + (n === 0 ? ' active' : '');
+          dot.addEventListener('click', function () { goTo(n); });
+          dotsWrap.appendChild(dot);
+        })(i);
+      }
+
+      function goTo(i) {
+        index = (i + total) % total;
+        slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+        var dots = dotsWrap.children;
+        for (var n = 0; n < dots.length; n++) {
+          dots[n].classList.toggle('active', n === index);
+        }
+      }
+
+      document.getElementById('prev').addEventListener('click', function () { goTo(index - 1); });
+      document.getElementById('next').addEventListener('click', function () { goTo(index + 1); });
     })();
   </script>
 </body>

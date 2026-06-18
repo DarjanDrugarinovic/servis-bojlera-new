@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servis bojlera — izaberite lokaciju</title>
+  <title>Kapilarni termostat — Servis bojlera</title>
   <style>
     :root, [data-theme="light"] {
       --bg: #f4f6fa;
@@ -13,9 +13,6 @@
       --text: #1c2128;
       --muted: #5a6675;
       --accent: #1565d8;
-      --gold: #b8860b;
-      --green: #1a8a4a;
-      --red: #d93636;
       --hover: #f0f3f8;
     }
     [data-theme="dark"] {
@@ -26,9 +23,6 @@
       --text: #e6e8ec;
       --muted: #9aa3b2;
       --accent: #4fa3ff;
-      --gold: #ffd24a;
-      --green: #4ade80;
-      --red: #f87171;
       --hover: #20242e;
     }
     * { box-sizing: border-box; }
@@ -46,12 +40,13 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .links { display: flex; flex-direction: column; gap: 18px; margin: 32px 0; }
-    a.search-card {
+    .product-btn {
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       gap: 16px;
-      padding: 20px 22px;
+      margin: 32px 0 0;
+      padding: 22px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -60,23 +55,19 @@
       color: var(--text);
       transition: background 0.15s, border-color 0.15s;
     }
-    a.search-card:hover { background: var(--hover); text-decoration: none; }
-    .search-card .num {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.4em;
-      height: 2.4em;
-      background: var(--card2);
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--gold);
+    .product-btn:hover { background: var(--hover); text-decoration: none; }
+    .product-btn img {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: block;
     }
-    .search-card .body { flex: 1; }
-    .search-card .title { display: block; font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
-    .search-card .desc { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 3px; }
+    .product-btn .title { font-size: 1.15rem; font-weight: 700; }
+    .back { display: inline-block; margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+    .back:hover { color: var(--text); }
     .theme-toggle {
       position: fixed;
       bottom: 22px;
@@ -106,45 +97,16 @@
 <div class="wrap">
 
   <header>
-    <h1>Servis bojlera</h1>
-    <div class="date">izaberite lokaciju ili sekciju</div>
+    <h1>Kapilarni termostat</h1>
+    <div class="date">zamena i servis kapilarnog termostata</div>
   </header>
 
-  <div class="links">
+  <a class="product-btn" href="kapilarni-termostat.jpg">
+    <img src="kapilarni-termostat.jpg" alt="Kapilarni termostat">
+    <span class="title">Kapilarni termostat</span>
+  </a>
 
-    <a class="search-card" href="beograd/index.html">
-      <span class="num">BG</span>
-      <span class="body">
-        <span class="title">Beograd</span>
-        <span class="desc">Servis bojlera Beograd — hitne intervencije, dolazak za 30–60 min.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="metalac/index.html">
-      <span class="num">M</span>
-      <span class="body">
-        <span class="title">Metalac</span>
-        <span class="desc">Servis Metalac bojlera — AI pozadina i AI sajt verzije.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="kapilarni-termostat/index.html">
-      <span class="num">KT</span>
-      <span class="body">
-        <span class="title">Kapilarni termostat</span>
-        <span class="desc">Zamena i servis kapilarnog termostata.</span>
-      </span>
-    </a>
-
-    <a class="search-card" href="seo/index.html">
-      <span class="num">SEO</span>
-      <span class="body">
-        <span class="title">SEO / Google Ads</span>
-        <span class="desc">Screenshotovi podešavanja kampanje (sitelinks, preporuke).</span>
-      </span>
-    </a>
-
-  </div>
+  <a class="back" href="../index.html">&larr; Nazad</a>
 
 </div>
 
