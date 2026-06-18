@@ -1,567 +1,152 @@
-<!doctype html>
-<html lang="sr">
+<!DOCTYPE html>
+<html lang="sr" data-theme="light">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Servis Bojlera Beograd</title>
-<meta name="description" content="Servis bojlera Beograd - hitne intervencije 00-24, dolazak za 30-60 minuta, garancija na rad." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: Inter, Arial, sans-serif;
-  overflow-x: hidden;
-}
-.page {
-  width: 100%;
-  max-width: 728px;
-  margin: 0 auto;
-  background: #000;
-  min-height: 100vh;
-  overflow: hidden;
-}
-.topbar {
-  height: 86px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: #050505;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.flame {
-  font-size: 42px;
-  color: #ff6200;
-  filter: drop-shadow(0 0 12px rgba(255, 98, 0, 0.4));
-}
-.brandText {
-  font-weight: 900;
-  line-height: 1.05;
-  font-size: 20px;
-}
-.brandText span {
-  color: #ff6200;
-}
-.callTop {
-  background: linear-gradient(#ff7415, #ff5600);
-  padding: 13px 19px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: 900;
-  font-size: 19px;
-  box-shadow: 0 0 30px rgba(255, 98, 0, 0.45);
-}
-.hamb {
-  width: 34px;
-  display: grid;
-  gap: 6px;
-}
-.hamb i {
-  height: 3px;
-  background: #fff;
-  border-radius: 5px;
-}
-.hero {
-  position: relative;
-  container-type: inline-size;
-  line-height: 1;
-  display: grid;
-  background: #000;
-}
-.heroBg {
-  grid-area: 1 / 1;
-  align-self: start;
-  width: 100%;
-  height: auto;
-  z-index: 0;
-}
-.heroCopy {
-  grid-area: 1 / 1;
-  align-self: start;
-  position: relative;
-  z-index: 1;
-  margin-left: 3.7cqw;
-  max-width: 58%;
-  padding: 2.8cqw 0 3cqw;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 1cqw;
-  border: 0.14cqw solid rgba(255, 98, 0, 0.65);
-  border-radius: 2.6cqw;
-  padding: 1.05cqw 1.9cqw;
-  font-size: 1.85cqw;
-  font-weight: 900;
-  background: rgba(0, 0, 0, 0.55);
-}
-.badge .clock,
-.badge b {
-  color: #ff6200;
-}
-.heroCopy h1 {
-  margin: 2.7cqw 0 0;
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: -0.35cqw;
-  font-size: 8.9cqw;
-  line-height: 0.96;
-}
-.heroCopy h1 span {
-  display: block;
-  color: #ff6200;
-}
-.heroCopy h1 em {
-  display: block;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 7.5cqw;
-}
-.lead {
-  margin: 2.7cqw 0 0;
-  font-size: 2.3cqw;
-  line-height: 1.45;
-  color: #e8e8e8;
-  font-weight: 500;
-}
-.feats {
-  list-style: none;
-  padding: 0;
-  margin: 2.6cqw 0 0;
-}
-.feats li {
-  display: flex;
-  align-items: center;
-  gap: 1.3cqw;
-  font-size: 2.35cqw;
-  line-height: 2.1;
-  font-weight: 600;
-}
-.feats li b {
-  width: 2.7cqw;
-  height: 2.7cqw;
-  border: 0.2cqw solid #ff6200;
-  border-radius: 50%;
-  display: inline-grid;
-  place-items: center;
-  color: #ff6200;
-  font-size: 1.5cqw;
-  flex: none;
-}
-.heroCall {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.6cqw;
-  margin-top: 2.8cqw;
-  background: linear-gradient(#ff7415, #ff5600);
-  padding: 2.1cqw 3.8cqw;
-  border-radius: 1.5cqw;
-  color: #fff;
-  text-decoration: none;
-  font-size: 3.9cqw;
-  font-weight: 900;
-  box-shadow: 0 0 4cqw rgba(255, 98, 0, 0.45);
-}
-.trust {
-  display: flex;
-  align-items: center;
-  gap: 1cqw;
-  margin-top: 2.6cqw;
-  color: #ddd;
-  font-size: 1.9cqw;
-  font-weight: 800;
-}
-.trust span {
-  color: #ff6200;
-}
-.shield,
-.years {
-  position: absolute;
-  z-index: 1;
-  text-align: center;
-}
-.shield {
-  right: 3.4%;
-  top: 8.4%;
-  width: 18%;
-  aspect-ratio: 112 / 128;
-  background: #888;
-  clip-path: polygon(50% 0, 100% 11%, 100% 52%, 50% 100%, 0 52%, 0 11%);
-  filter: drop-shadow(0 0 3cqw rgba(255, 98, 0, 0.5));
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  padding-top: 2.9cqw;
-}
-.shield::before {
-  content: "";
-  position: absolute;
-  inset: 0.34cqw;
-  background: linear-gradient(150deg, #262626, #050505 65%);
-  clip-path: polygon(50% 0, 100% 11%, 100% 52%, 50% 100%, 0 52%, 0 11%);
-}
-.shield .chk {
-  position: relative;
-  width: 4.4cqw;
-  height: 4.4cqw;
-  margin: 0 auto 0.9cqw;
-  border-radius: 1.4cqw;
-  border: 0.3cqw solid #ff6200;
-  display: grid;
-  place-items: center;
-  color: #ff6200;
-  font-size: 2.5cqw;
-}
-.shield b {
-  position: relative;
-  display: block;
-  font-size: 1.8cqw;
-  letter-spacing: -0.05cqw;
-  color: #fff;
-  line-height: 1.3;
-}
-.years {
-  right: 2.6%;
-  top: 39.5%;
-  width: 18.6%;
-  aspect-ratio: 1;
-  background: linear-gradient(145deg, #1f1f1f, #050505);
-  border: 0.3cqw solid rgba(255, 98, 0, 0.8);
-  border-radius: 50%;
-  box-shadow: 0 0 3cqw rgba(255, 98, 0, 0.45);
-  display: grid;
-  align-content: center;
-}
-.years small {
-  font-size: 1.65cqw;
-  font-weight: 800;
-}
-.years b {
-  display: block;
-  color: #ff6200;
-  font-size: 6.6cqw;
-  line-height: 0.9;
-}
-.years span {
-  font-size: 1.6cqw;
-  font-weight: 800;
-  line-height: 1.15;
-}
-.eyebrow,
-.service span,
-.stat div {
-  color: #ff6200;
-}
-.section {
-  padding: 0 22px 10px;
-}
-.panel {
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.035),
-    rgba(255, 255, 255, 0.01)
-  );
-  border-radius: 18px;
-  padding: 18px 22px;
-  box-shadow: 0 0 28px rgba(255, 98, 0, 0.08);
-}
-.eyebrow {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 900;
-}
-.section h2 {
-  font-size: 26px;
-  line-height: 1.1;
-  text-align: center;
-  margin: 6px 0 18px;
-}
-.services {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.service {
-  min-height: 148px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 11px;
-  background: linear-gradient(135deg, #121212, #060606);
-  padding: 18px 16px;
-  display: grid;
-  grid-template-columns: 78px 1fr;
-}
-.ico {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  border: 1px solid #ff6200;
-  display: grid;
-  place-items: center;
-  color: #ff6200;
-  box-shadow: 0 0 22px rgba(255, 98, 0, 0.45);
-  font-size: 31px;
-}
-.service h3 {
-  margin: 13px 0 7px;
-  font-size: 18px;
-}
-.service p {
-  margin: 0;
-  color: #ddd;
-  font-size: 14px;
-  line-height: 1.35;
-}
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-.stat {
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 12px;
-  background: linear-gradient(135deg, #121212, #060606);
-  padding: 16px 8px;
-  text-align: center;
-  min-height: 130px;
-}
-.stat b {
-  display: block;
-  font-size: 27px;
-}
-.stat span {
-  font-size: 12px;
-  text-transform: uppercase;
-}
-.brands p {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  font-size: 20px;
-  font-weight: 900;
-}
-.cta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 18px 22px 10px;
-}
-.cta a {
-  height: 76px;
-  border-radius: 13px;
-  color: #fff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  font-weight: 900;
-}
-.orange {
-  background: linear-gradient(#ff7415, #ff5600);
-}
-.green {
-  background: linear-gradient(#20b83d, #07951e);
-}
-.cta small {
-  display: block;
-  font-size: 12px;
-}
-.bottom {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 4px 20px 12px;
-  text-align: center;
-  font-size: 12px;
-  color: #ddd;
-}
-@media (max-width: 520px) {
-  .topbar {
-    padding: 0 14px;
-    gap: 10px;
-  }
-  .brand {
-    gap: 8px;
-    min-width: 0;
-  }
-  .flame svg {
-    width: 30px;
-    height: 30px;
-  }
-  .brandText {
-    font-size: 15px;
-  }
-  .callTop {
-    font-size: 14px;
-    padding: 10px 12px;
-    white-space: nowrap;
-  }
-  .hamb {
-    width: 26px;
-    flex: none;
-  }
-  .section {
-    padding: 0 16px 10px;
-  }
-  .panel {
-    padding: 16px 14px;
-  }
-  .section h2 {
-    font-size: 21px;
-  }
-  .service {
-    grid-template-columns: 1fr;
-  }
-  .stats {
-    gap: 8px;
-  }
-  .stat {
-    min-width: 0;
-    padding: 12px 4px;
-    min-height: 0;
-  }
-  .stat div svg {
-    width: 22px;
-    height: 22px;
-  }
-  .stat b {
-    font-size: 19px;
-    white-space: nowrap;
-  }
-  .stat span {
-    font-size: 8.5px;
-  }
-  .brands p {
-    font-size: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 18px;
-  }
-  .cta {
-    gap: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .cta a {
-    height: auto;
-    min-height: 66px;
-    padding: 10px 8px;
-    gap: 8px;
-    font-size: 13px;
-  }
-  .cta a b {
-    font-size: 15px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servis bojlera Beograd — izaberite</title>
+  <style>
+    :root, [data-theme="light"] {
+      --bg: #f4f6fa;
+      --card: #ffffff;
+      --card2: #eef1f6;
+      --border: #d8dee8;
+      --text: #1c2128;
+      --muted: #5a6675;
+      --accent: #1565d8;
+      --gold: #b8860b;
+      --hover: #f0f3f8;
+    }
+    [data-theme="dark"] {
+      --bg: #0f1115;
+      --card: #181b22;
+      --card2: #1e222b;
+      --border: #2a2f3a;
+      --text: #e6e8ec;
+      --muted: #9aa3b2;
+      --accent: #4fa3ff;
+      --gold: #ffd24a;
+      --hover: #20242e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      line-height: 1.6;
+      transition: background 0.2s, color 0.2s;
+    }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 48px 20px 80px; }
+    header h1 { font-size: 1.9rem; margin: 0 0 6px; }
+    header .date { color: var(--muted); font-size: 0.9rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .links { display: flex; flex-direction: column; gap: 18px; margin: 32px 0; }
+    a.search-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    a.search-card:hover { background: var(--hover); text-decoration: none; }
+    .search-card .num {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.4em;
+      height: 2.4em;
+      background: var(--card2);
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--gold);
+    }
+    .search-card .body { flex: 1; }
+    .search-card .title { display: block; font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
+    .search-card .desc { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 3px; }
+    .back { display: inline-block; margin-top: 8px; color: var(--muted); font-size: 0.9rem; }
+    .back:hover { color: var(--text); }
+    .theme-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 1000;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .theme-toggle:hover { border-color: var(--accent); }
+  </style>
 </head>
 <body>
-<main class="page">
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Promeni temu">
+    <span id="themeIcon">☀️</span><span id="themeLabel">Svetla</span>
+  </button>
+<div class="wrap">
 
-  <header class="topbar">
-    <div class="brand">
-      <div class="flame"><svg viewBox="0 0 24 24" width="40" height="40" fill="#ff6200"><path d="M12 2c1 4-2 5-2 8a2 2 0 0 0 4 0c0-1 0-2-.5-3 2 1.5 4.5 4 4.5 8a6 6 0 0 1-12 0c0-3 2-5 3.5-7C10.5 5.5 11 3.5 12 2z"/></svg></div>
-      <div class="brandText">SERVIS <span>BOJLERA</span><br/>BEOGRAD</div>
-    </div>
-    <a class="callTop" href="tel:+381613112073">☎ 061/311-20-73</a>
-    <div class="hamb"><i></i><i></i><i></i></div>
+  <header>
+    <h1>Servis bojlera Beograd</h1>
+    <div class="date">izaberite verziju</div>
   </header>
 
-  <section class="hero">
-    <img class="heroBg" src="background.jpg" alt="Servis bojlera Beograd" />
-    <div class="heroCopy">
-      <div class="badge"><span class="clock">◷</span> <b>HITNE INTERVENCIJE</b> 00-24</div>
-      <h1>SERVIS <span>BOJLERA</span><em>BEOGRAD</em></h1>
-      <p class="lead">Brza reakcija. Kvalitetan servis.<br/>Garancija na rad i ugrađene delove.</p>
-      <ul class="feats">
-        <li><b>✓</b>Dolazak za 30-60 min</li>
-        <li><b>✓</b>Svi delovi na stanju</li>
-        <li><b>✓</b>Garancija na rad</li>
-        <li><b>✓</b>Ceo Beograd</li>
-      </ul>
-      <a class="heroCall" href="tel:+381613112073">☎ 061/311-20-73</a>
-      <div class="trust"><span>♢</span> POUZDAN SERVIS VEĆ 20+ GODINA</div>
-    </div>
-    <div class="shield">
-      <div class="chk">✓</div>
-      <b>GARANCIJA<br/>NA RAD</b>
-    </div>
-    <div class="years">
-      <small>VIŠE OD</small>
-      <b>20</b>
-      <span>GODINA<br/>ISKUSTVA</span>
-    </div>
-  </section>
+  <div class="links">
 
-  <section class="section">
-    <div class="panel">
-      <div class="eyebrow">NAŠE USLUGE</div>
-      <h2>Sve za vaš bojler na jednom mestu</h2>
-      <div class="grid services">
-        <article class="service">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <div><h3>Popravka bojlera</h3><p>Otklanjanje svih kvarova brzo i efikasno.</p><span>→</span></div>
-        </article>
-        <article class="service">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-          <div><h3>Montaža bojlera</h3><p>Stručna ugradnja svih vrsta bojlera.</p><span>→</span></div>
-        </article>
-        <article class="service">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg></div>
-          <div><h3>Zamena grejača</h3><p>Originalni grejači uz garanciju.</p><span>→</span></div>
-        </article>
-        <article class="service">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
-          <div><h3>Čišćenje kamenca</h3><p>Produžite vek bojlera i uštedite energiju.</p><span>→</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
+    <a class="search-card" href="ai-sajt-slika/index.html">
+      <span class="num">1</span>
+      <span class="body">
+        <span class="title">AI sajt slika</span>
+        <span class="desc">Prikaz AI generisane slike.</span>
+      </span>
+    </a>
 
-  <section class="section">
-    <div class="panel">
-      <div class="eyebrow">ZAŠTO IZABRATI NAS?</div>
-      <h2>Iskustvo. Kvalitet. Pouzdanost.</h2>
-      <div class="stats">
-        <div class="stat"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><b>20+</b><span>GODINA ISKUSTVA</span></div>
-        <div class="stat"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><b>100%</b><span>GARANCIJA NA RAD</span></div>
-        <div class="stat"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><b>30-60</b><span>MINUTA DOLAZAK</span></div>
-        <div class="stat"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><b>CEO</b><span>BEOGRAD POKRIVEN</span></div>
-      </div>
-    </div>
-  </section>
+    <a class="search-card" href="darjan-sajt/index.html">
+      <span class="num">2</span>
+      <span class="body">
+        <span class="title">Darjan sajt</span>
+        <span class="desc">Ručno izrađena verzija sajta.</span>
+      </span>
+    </a>
 
-  <section class="section">
-    <div class="panel brands">
-      <div class="eyebrow">POPRAVLJAMO SVE BRENDOVE</div>
-      <p><span>⌂ ARISTON</span><strong>gorenje</strong><span>metalac</span><span>ⓗ BOSCH</span><span>TESY</span><span>tatramat</span></p>
-    </div>
-  </section>
-
-  <div class="cta">
-    <a class="orange" href="tel:+381613112073">☎ <span>POZOVITE NAS<br/><b>061/311-20-73</b><small>Dostupni 00-24h</small></span></a>
-    <a class="green" href="https://wa.me/381613112073">☏ <span>WHATSAPP<br/><small>Brza poruka</small></span></a>
-  </div>
-  <div class="bottom">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="#ff6200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><br/>Bez čekanja</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="#ff6200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><br/>Povoljne cene</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="#ff6200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><br/>Profesionalni servis</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="#ff6200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><br/>Račun i garancija</span>
   </div>
 
-</main>
+  <a class="back" href="../index.html">&larr; Nazad</a>
+
+</div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var icon = document.getElementById('themeIcon');
+      var label = document.getElementById('themeLabel');
+      var btn = document.getElementById('themeToggle');
+      function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        if (theme === 'dark') { icon.textContent = '🌙'; label.textContent = 'Tamna'; }
+        else { icon.textContent = '☀️'; label.textContent = 'Svetla'; }
+      }
+      btn.addEventListener('click', function () {
+        apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    })();
+  </script>
 </body>
 </html>

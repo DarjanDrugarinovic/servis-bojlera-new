@@ -3,46 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metalac pozadina - Hero scena</title>
+  <title>Metalac pozadina - Poređenje</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .compare {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    .compare-head {
+      text-align: center;
+      color: #1c2128;
+      margin-bottom: 28px;
+    }
+    .compare-head h1 { margin: 0 0 6px; font-size: 1.7rem; }
+    .compare-head p { margin: 0; color: #5a6675; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .compare-col {
+      background: #fff;
+      border: 1px solid #d8dde5;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(8, 24, 44, .10);
+    }
+    .compare-col h2 {
+      margin: 0;
+      padding: 14px 18px;
+      font-size: 1rem;
+      color: #fff;
+      background: var(--metalac-blue);
+      letter-spacing: .3px;
+    }
+    .compare-col .panel-body { padding: 0; }
+    .compare-col .panel-body img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* scale down the CSS scene so both columns line up */
+    .compare-col .hero-bg { min-height: 0; }
+    .compare-col .scene { width: 100%; min-height: 0; aspect-ratio: 980 / 1600; }
+    @media (max-width: 860px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <main class="hero-bg">
-    <section class="scene" aria-label="Pozadina za servis bojlera Metalac">
-      <div class="wall-texture"></div>
+  <div class="compare">
+    <div class="compare-head">
+      <h1>Poređenje: AI pozadina vs AI slika</h1>
+      <p>Levo je verzija napravljena u CSS-u, desno originalna AI generisana slika.</p>
+    </div>
 
-      <div class="boiler-wrap">
-        <div class="boiler">
-          <div class="boiler-highlight"></div>
-          <div class="logo">metalac</div>
-          <div class="display">
-            <span class="temp">55</span>
-            <div class="knob"></div>
-            <span class="dot d1"></span>
-            <span class="dot d2"></span>
-            <span class="dot d3"></span>
-            <span class="dot d4"></span>
-          </div>
-          <div class="pipe pipe-left"></div>
-          <div class="pipe pipe-right"></div>
-          <div class="valve"></div>
+    <div class="compare-grid">
+
+      <div class="compare-col">
+        <h2>AI pozadina (CSS)</h2>
+        <div class="panel-body">
+          <main class="hero-bg">
+            <section class="scene" aria-label="Pozadina za servis bojlera Metalac">
+              <div class="wall-texture"></div>
+
+              <div class="boiler-wrap">
+                <div class="boiler">
+                  <div class="boiler-highlight"></div>
+                  <div class="logo">metalac</div>
+                  <div class="display">
+                    <span class="temp">55</span>
+                    <div class="knob"></div>
+                    <span class="dot d1"></span>
+                    <span class="dot d2"></span>
+                    <span class="dot d3"></span>
+                    <span class="dot d4"></span>
+                  </div>
+                  <div class="pipe pipe-left"></div>
+                  <div class="pipe pipe-right"></div>
+                  <div class="valve"></div>
+                </div>
+              </div>
+
+              <div class="shelf">
+                <div class="plant-pot">
+                  <span class="leaf l1"></span>
+                  <span class="leaf l2"></span>
+                  <span class="leaf l3"></span>
+                  <span class="leaf l4"></span>
+                  <span class="leaf l5"></span>
+                  <span class="leaf l6"></span>
+                </div>
+              </div>
+
+              <div class="towel-hook"></div>
+              <div class="towel"></div>
+            </section>
+          </main>
         </div>
       </div>
 
-      <div class="shelf">
-        <div class="plant-pot">
-          <span class="leaf l1"></span>
-          <span class="leaf l2"></span>
-          <span class="leaf l3"></span>
-          <span class="leaf l4"></span>
-          <span class="leaf l5"></span>
-          <span class="leaf l6"></span>
+      <div class="compare-col">
+        <h2>AI slika (original)</h2>
+        <div class="panel-body">
+          <img src="background.jpg" alt="Metalac AI generisana slika" />
         </div>
       </div>
 
-      <div class="towel-hook"></div>
-      <div class="towel"></div>
-    </section>
-  </main>
+    </div>
+
+    <p style="text-align:center;margin-top:28px;">
+      <a href="../index.html" style="color:#003f91;text-decoration:none;">&larr; Nazad</a>
+    </p>
+  </div>
 </body>
 </html>
