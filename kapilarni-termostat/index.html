@@ -41,31 +41,46 @@
     a:hover { text-decoration: underline; }
 
     .product-btn {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      margin: 32px 0 0;
-      padding: 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .product-btn:hover { background: var(--hover); text-decoration: none; }
-    .product-btn img {
+      align-items: flex-end;
+      justify-content: center;
       width: 100%;
       max-width: 360px;
       aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      display: block;
+      margin: 32px auto 0;
+      border-radius: 14px;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+      transform: translateY(0);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .product-btn .title { font-size: 1.15rem; font-weight: 700; }
+    .product-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0) 70%);
+    }
+    .product-btn:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.30);
+    }
+    .product-btn .title {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 18px 20px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
     .back { display: inline-block; margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
     .back:hover { color: var(--text); }
     .theme-toggle {
@@ -101,8 +116,7 @@
     <div class="date">zamena i servis kapilarnog termostata</div>
   </header>
 
-  <a class="product-btn" href="kapilarni-termostat.jpg">
-    <img src="kapilarni-termostat.jpg" alt="Kapilarni termostat">
+  <a class="product-btn" href="kapilarni-termostat.jpg" style="background-image: url('kapilarni-termostat.jpg');" aria-label="Kapilarni termostat">
     <span class="title">Kapilarni termostat</span>
   </a>
 

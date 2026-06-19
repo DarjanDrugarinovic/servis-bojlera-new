@@ -40,55 +40,21 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .carousel {
-      position: relative;
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
       margin: 32px 0 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      overflow: hidden;
       box-shadow: 0 1px 6px rgba(0,0,0,0.10);
     }
-    .slides { display: flex; transition: transform 0.4s ease; }
-    .slides img {
-      min-width: 100%;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-    .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .nav:hover { border-color: var(--accent); background: var(--hover); }
-    .prev { left: 14px; }
-    .next { right: 14px; }
-    .dots { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }
-    .dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--border);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .dot.active { background: var(--accent); }
     .back { display: inline-block; margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
     .back:hover { color: var(--text); }
     .theme-toggle {
@@ -124,16 +90,11 @@
     <div class="date">screenshotovi podešavanja kampanje</div>
   </header>
 
-  <div class="carousel">
-    <div class="slides" id="slides">
-      <img src="1.jpg" alt="Fotografija 1">
-      <img src="2.jpg" alt="Fotografija 2">
-      <img src="3.jpg" alt="Fotografija 3">
-    </div>
-    <button class="nav prev" id="prev" aria-label="Prethodna">&#10094;</button>
-    <button class="nav next" id="next" aria-label="Sledeća">&#10095;</button>
+  <div class="gallery">
+    <img src="1.jpg" alt="Fotografija 1">
+    <img src="2.jpg" alt="Fotografija 2">
+    <img src="3.jpg" alt="Fotografija 3">
   </div>
-  <div class="dots" id="dots"></div>
 
   <a class="back" href="../index.html">&larr; Nazad</a>
 
@@ -161,34 +122,6 @@
       btn.addEventListener('click', function () {
         apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
       });
-    })();
-
-    (function () {
-      var slides = document.getElementById('slides');
-      var total = slides.children.length;
-      var dotsWrap = document.getElementById('dots');
-      var index = 0;
-
-      for (var i = 0; i < total; i++) {
-        (function (n) {
-          var dot = document.createElement('button');
-          dot.className = 'dot' + (n === 0 ? ' active' : '');
-          dot.addEventListener('click', function () { goTo(n); });
-          dotsWrap.appendChild(dot);
-        })(i);
-      }
-
-      function goTo(i) {
-        index = (i + total) % total;
-        slides.style.transform = 'translateX(-' + (index * 100) + '%)';
-        var dots = dotsWrap.children;
-        for (var n = 0; n < dots.length; n++) {
-          dots[n].classList.toggle('active', n === index);
-        }
-      }
-
-      document.getElementById('prev').addEventListener('click', function () { goTo(index - 1); });
-      document.getElementById('next').addEventListener('click', function () { goTo(index + 1); });
     })();
   </script>
 </body>
