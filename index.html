@@ -46,7 +46,38 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .links { display: flex; flex-direction: column; gap: 18px; margin: 32px 0; }
+    .links { display: flex; flex-direction: column; gap: 18px; margin: 18px 0 32px; }
+    .group { margin-top: 34px; }
+    .group:first-of-type { margin-top: 32px; }
+    .group-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .group-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .group-label .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--accent);
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 9px;
+    }
+    .group-sub { font-size: 0.85rem; color: var(--muted); margin: 4px 0 0; }
     a.search-card {
       display: flex;
       align-items: flex-start;
@@ -110,40 +141,52 @@
     <div class="date">izaberite lokaciju ili sekciju</div>
   </header>
 
-  <div class="links">
+  <div class="group">
+    <div class="group-label">Sajtovi <span class="tag">web</span></div>
+    <p class="group-sub">Live verzije sajtova za servis bojlera.</p>
+    <div class="links">
 
-    <a class="search-card" href="beograd/index.html">
-      <span class="num">BG</span>
-      <span class="body">
-        <span class="title">Beograd</span>
-        <span class="desc">Servis bojlera Beograd — hitne intervencije, dolazak za 30–60 min.</span>
-      </span>
-    </a>
+      <a class="search-card" href="beograd/index.html">
+        <span class="num">BG</span>
+        <span class="body">
+          <span class="title">Beograd</span>
+          <span class="desc">Servis bojlera Beograd — hitne intervencije, dolazak za 30–60 min.</span>
+        </span>
+      </a>
 
-    <a class="search-card" href="metalac/index.html">
-      <span class="num">M</span>
-      <span class="body">
-        <span class="title">Metalac</span>
-        <span class="desc">Servis Metalac bojlera — AI pozadina i AI sajt verzije.</span>
-      </span>
-    </a>
+      <a class="search-card" href="metalac/index.html">
+        <span class="num">M</span>
+        <span class="body">
+          <span class="title">Metalac</span>
+          <span class="desc">Servis Metalac bojlera — AI pozadina i AI sajt verzije.</span>
+        </span>
+      </a>
 
-    <a class="search-card" href="kapilarni-termostat/index.html">
-      <span class="num">KT</span>
-      <span class="body">
-        <span class="title">Kapilarni termostat</span>
-        <span class="desc">Zamena i servis kapilarnog termostata.</span>
-      </span>
-    </a>
+    </div>
+  </div>
 
-    <a class="search-card" href="seo/index.html">
-      <span class="num">SEO</span>
-      <span class="body">
-        <span class="title">SEO / Google Ads</span>
-        <span class="desc">Screenshotovi podešavanja kampanje (sitelinks, preporuke).</span>
-      </span>
-    </a>
+  <div class="group">
+    <div class="group-label">Ostalo</div>
+    <p class="group-sub">Pojedinačne sekcije i materijali.</p>
+    <div class="links">
 
+      <a class="search-card" href="kapilarni-termostat/index.html">
+        <span class="num">KT</span>
+        <span class="body">
+          <span class="title">Kapilarni termostat</span>
+          <span class="desc">Zamena i servis kapilarnog termostata.</span>
+        </span>
+      </a>
+
+      <a class="search-card" href="seo/index.html">
+        <span class="num">SEO</span>
+        <span class="body">
+          <span class="title">SEO / Google Ads</span>
+          <span class="desc">Screenshotovi podešavanja kampanje (sitelinks, preporuke).</span>
+        </span>
+      </a>
+
+    </div>
   </div>
 
 </div>

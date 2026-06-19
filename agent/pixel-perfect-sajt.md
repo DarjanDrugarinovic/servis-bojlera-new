@@ -7,11 +7,14 @@ Služi kao kontekst za buduće sajtove koje ćemo praviti na isti način.
 Konkretan primer: `metalac/ai-sajt-slika/app.jpg` (740×1600) → `metalac/darjan-sajt/index.html`.
 
 > Platforma: **Windows 11**, shell **PowerShell** (primarni) + **Git Bash**.
-> Alati: **Chrome DevTools (MCP)** za render/screenshot, **OpenCV + Pillow** za isecanje
-> delova slike, **Python 3.11**.
+> Preduslovi: Python + **cv2 + numpy + pillow** (pillow je obavezan ovde — dimenzije,
+> side-by-side combo, kontaktni listovi). Render/screenshot: **Chrome DevTools (MCP)**.
+> Instalacija: [`instalacija-alata.md`](./instalacija-alata.md).
 
-> Povezani dokument: [`rad-sa-slikom.md`](./rad-sa-slikom.md) — detaljnije o OpenCV
-> kropovanju, inpaintingu i alternativnim alatima (`System.Drawing`, Edge headless).
+> Povezani dokumenti:
+> [`instalacija-alata.md`](./instalacija-alata.md) — instalacija alata (OpenCV, numpy, Pillow);
+> [`hero-pozadina.md`](./hero-pozadina.md) — izvlačenje hero pojasa + uklanjanje teksta (inpainting);
+> [`transparentna-pozadina.md`](./transparentna-pozadina.md) — izrezivanje proizvoda u providni PNG (cutout).
 
 ---
 
@@ -175,8 +178,8 @@ crop = reg[ys.min()-3:ys.max()+3, xs.min()-3:xs.max()+3]
 cv2.imwrite(r'...\assets\shield.png', crop)
 ```
 
-> Isti princip kao u `rad-sa-slikom.md` §4: **razdvajanje po HSV/boji** kad se
-> objekat i okolina preklapaju.
+> Isti princip kao u [`hero-pozadina.md`](./hero-pozadina.md) §3: **razdvajanje po HSV/boji**
+> kad se objekat i okolina preklapaju.
 
 ### 3.5 Kontrolni list (pregled svih isečaka odjednom)
 
@@ -226,7 +229,7 @@ ne bude**, NE pravimo pozadinu „od nule" iz CSS-a (fotorealistična scena se t
 može verno napraviti). Umesto toga: **hero pozadina je ionako već u `app.jpg`** —
 samo ima tekst/dugmad preko sebe. Izvučemo je i očistimo inpaintingom.
 
-Postupak (kombinacija §2.2 + §3 ovog dokumenta i §4 iz [`rad-sa-slikom.md`](./rad-sa-slikom.md)):
+Postupak (kombinacija §2.2 + §3 ovog dokumenta i §3 iz [`hero-pozadina.md`](./hero-pozadina.md)):
 
 ### Korak 1 — iseci hero pojas iz `app.jpg`
 
@@ -242,7 +245,7 @@ cv2.imwrite(r'...\assets\_hero_raw.jpg', hero, [cv2.IMWRITE_JPEG_QUALITY, 95])
 ### Korak 2 — ukloni tekst/dugmad inpaintingom, rekonstruiši pozadinu
 
 Tekst i dugmad su skoro uvek **na levoj strani**, preko zida (ravna svetla površina),
-dok je bojler/peškir desno. Zato koristimo dve strategije (kao u `rad-sa-slikom.md` §4):
+dok je bojler/peškir desno. Zato koristimo dve strategije (kao u [`hero-pozadina.md`](./hero-pozadina.md) §3):
 
 - **Tekst/dugmad na ravnom zidu** → NE inpaint, nego **ravno popuni bojom zida**
   (uzorkuj boju po redu sa čiste ivice). Inpaint na velikim površinama pravi sive mrlje.
@@ -283,9 +286,9 @@ cv2.imwrite(r'...\assets\hero-bg.jpg', res, [cv2.IMWRITE_JPEG_QUALITY, 92])
 ```
 
 > **Uvek prvo preview maske** (poluprovidan crveni overlay) pre „pečenja" — vidi
-> `rad-sa-slikom.md` §4.3. Jeftino je i spasava od pogrešnih koordinata.
+> [`hero-pozadina.md`](./hero-pozadina.md) §3.3. Jeftino je i spasava od pogrešnih koordinata.
 
-### Korak 3 — koristi je isto kao u §4
+### Korak 3 — koristi je isto kao u §4 (Hero pozadina)
 
 ```css
 .hero{
@@ -301,7 +304,7 @@ cv2.imwrite(r'...\assets\hero-bg.jpg', res, [cv2.IMWRITE_JPEG_QUALITY, 92])
 
 **Granični slučaj:** ako hero ima i složenih grafika preko sredine (bedževi, krugovi),
 njih ukloni **punom maskom** (elipsa/krug) + inpaint — isto kao bedževe u
-`rad-sa-slikom.md` §4.1, tačka 3.
+[`hero-pozadina.md`](./hero-pozadina.md) §3.1, tačka 3.
 
 **Šta NE radimo:** ne „izmišljamo" scenu iz teksta i ne crtamo je u CSS-u — rezultat
 ne bi bio pixel-perfect. Pravo AI generisanje pozadine je moguće samo uz zaseban
