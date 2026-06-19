@@ -40,11 +40,31 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    .section { margin-top: 40px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
+    }
+    .section-head h2 { font-size: 1.25rem; margin: 0; }
+    .section-head .date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 10px;
+      white-space: nowrap;
+    }
     .gallery {
       display: flex;
       flex-direction: column;
       gap: 24px;
-      margin: 32px 0 0;
+      margin: 24px 0 0;
     }
     .gallery img {
       width: 100%;
@@ -90,10 +110,26 @@
     <div class="date">screenshotovi podešavanja kampanje</div>
   </header>
 
-  <div class="gallery">
-    <img src="1.jpg" alt="Fotografija 1">
-    <img src="2.jpg" alt="Fotografija 2">
-    <img src="3.jpg" alt="Fotografija 3">
+  <div class="section">
+    <div class="section-head">
+      <h2>Podešavanja kampanje</h2>
+      <span class="date">7. jun 2026.</span>
+    </div>
+    <div class="gallery">
+      <img src="1.jpg" alt="Fotografija 1">
+      <img src="2.jpg" alt="Fotografija 2">
+      <img src="3.jpg" alt="Fotografija 3">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Novo podešavanje</h2>
+      <span class="date">19. jun 2026.</span>
+    </div>
+    <div class="gallery">
+      <img src="4.jpg" alt="Fotografija 4">
+    </div>
   </div>
 
   <a class="back" href="../index.html">&larr; Nazad</a>
