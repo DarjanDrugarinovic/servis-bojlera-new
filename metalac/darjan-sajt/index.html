@@ -2,7 +2,7 @@
 <html lang="sr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=740" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Servis bojlera Metalac — 061/200-58-25</title>
 <style>
   :root{
@@ -64,7 +64,7 @@
     min-height:555px;
     display:flex;flex-direction:column;
     background:#eef1f4 url('../ai-pozadina/background.jpg') no-repeat;
-    background-size:600px auto;
+    background-size:81% auto;
     background-position:right -140px;
     padding:30px 20px 26px;
   }
@@ -164,6 +164,26 @@
   .fitem .fi{width:26px;height:26px;}
   .fitem b{font-size:12px;font-weight:800;letter-spacing:.3px;line-height:1.25;}
   .fitem span{font-size:11px;color:var(--muted);line-height:1.35;}
+
+  /* ---------- MOBILNI (uži ekrani) ---------- */
+  @media (max-width:740px){
+    .hero{
+      min-height:74vw;
+      background-size:78% auto;
+      background-position:right -6vw;
+      padding:24px 18px 22px;
+    }
+    .hero h1{font-size:8vw;}
+    .hero h1 .big{font-size:12.5vw;}
+    .hero .lead{font-size:4.2vw;max-width:62%;}
+    .checks li{font-size:4vw;}
+    .hero-btns{gap:10px;}
+    .btn{padding:12px 13px;gap:9px;}
+    .btn b{font-size:4vw;}
+    .btn small{font-size:3vw;}
+    .btn .bi{width:30px;height:30px;}
+    h2.title{font-size:6vw;}
+  }
 </style>
 </head>
 <body>

@@ -381,35 +381,74 @@ CSS pravila za isečke (da se uklope u kartice):
 
 ---
 
-## 6b. Mobilni viewport — fiksna širina mockup-a (VAŽNO)
+## 6b. Mobilni prikaz — fiksna širina mockup-a (VAŽNO)
 
 **Najčešća zamka za mobilni.** Mockup (`app.jpg`) je dizajn **fiksne širine** (740px):
 font-ovi, naslovi i mreže (4 kolone) su u fiksnim pikselima. Ako ostaviš podrazumevani
-viewport:
+viewport (`width=device-width`) bez ikakvog responsive CSS-a, telefon (npr. 390px)
+pokušava da nagura 740px sadržaja u 390px → **horizontalni overflow**, deo stranice
+je odsečen.
 
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-```
+Postoje **dva pristupa**, sa različitim ciljevima. Biraj prema tome šta želiš:
 
-…telefon (npr. 390px širine) pokušava da nagura dizajn od 740px u 390px. Fiksne px
-veličine ne mogu da se skupe, pa sadržaj **prelazi preko ivice ekrana** → deo stranice
-je odsečen i može da se „zoom-out"-uje (horizontalni overflow).
-
-### Rešenje — reci telefonu da renderuje na širini dizajna
+### Pristup A — verno mockup-u (skalirano, ali „odzumirano")
 
 ```html
 <meta name="viewport" content="width=740" />
 ```
 
-Mobilni browser tada postavi layout na **740px** (širina dizajna) i **automatski
-skalira celu stranicu** da stane na ekran. Rezultat: identične proporcije kao mockup,
-samo umanjeno (skala ≈ `širina_ekrana / 740`, npr. ~0.53 na 390px telefonu).
-**Bez horizontalnog overflow-a, bez odsecanja.**
+Telefon postavi layout na **740px** i **automatski skalira celu stranicu** da stane na
+ekran (skala ≈ `širina_ekrana / 740`, npr. ~0.56 na 412px telefonu). Rezultat:
+**proporcije identične mockup-u, bez overflow-a**, ALI ceo sajt deluje **odzumirano /
+sitno** (browser prikazuje na ~56%, `visualViewport.scale < 1`).
 
-> Desktop nije pogođen: `width=740` meta se na desktopu ignoriše; tamo radi
-> `.wrap { max-width:740px }` koji centrira sadržaj.
+> Koristi A samo ako je apsolutni prioritet da bude piksel-identično `app.jpg` i na
+> telefonu. U praksi korisnici to dožive kao „premali, odzumiran" sajt.
 
-### Sigurnosna mreža (da overflow nikad nije moguć)
+### Pristup B — pravi mobilni layout (PREPORUKA)
+
+Cilj: sadržaj **popunjava ekran u prirodnoj veličini**, tekst čitljiv (`scale = 1`).
+Mockup je 740px = u suštini telefon na 2× — pa na pravom telefonu treba da se renderuje
+na **device-width (1×)**, ne stisnut.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+Pošto su fiksni `px` (fontovi, slike) sada na svojoj pravoj veličini, a mreže su
+procentualne (`fr`), sve se prirodno prelomi i popuni ekran. Mobilna doterivanja drži u
+**media query-ju** da **desktop ostane pixel-perfect** (na širem ekranu `.wrap`
+max-width:740 centrira i renderuje tačno kao mockup):
+
+```css
+/* Sve mobilne korekcije SAMO za uske ekrane -> desktop netaknut */
+@media (max-width: 740px){
+  .hero{
+    min-height: 74vw;
+    background-size: 78% auto;        /* hero pozadina skalira sa širinom */
+    background-position: right -6vw;  /* vw umesto fiksnih px */
+    padding: 24px 18px 22px;
+  }
+  .hero h1      { font-size: 8vw; }   /* vw -> krupno i čitljivo na telefonu */
+  .hero h1 .big { font-size: 12.5vw; }
+  .hero .lead   { font-size: 4.2vw; max-width: 62%; }
+  .checks li    { font-size: 4vw; }
+  .btn b        { font-size: 4vw; }
+  h2.title      { font-size: 6vw; }
+}
+```
+
+Ključne tehnike za B:
+- **`vw` jedinice** za fontove/razmake koji treba da rastu sa širinom ekrana (umesto da
+  ostanu fiksni px tako da deluju sitno).
+- **Hero pozadina relativno**: `background-size: 78% auto` (proporcionalno), `background-
+  position` u `vw` — da bojler/peškir ostanu na mestu i na užem ekranu.
+- **Procentualne mreže** (`repeat(4,1fr)`) ostaju — same se skupe; po potrebi 4 → 2 kolone
+  u media query-ju za još bolju čitljivost (npr. „NAJČEŠĆI KVAROVI", footer).
+- **Napomena:** B na telefonu **nije više 1:1 sa `app.jpg`** (jer je app.jpg 740px dizajn),
+  ali je proporcionalno verno i mnogo upotrebljivije. Na desktopu ostaje 1:1.
+
+### Sigurnosna mreža (uz oba pristupa — da overflow nikad nije moguć)
 
 ```css
 html, body { overflow-x: hidden; }
@@ -417,24 +456,25 @@ html, body { overflow-x: hidden; }
 .grid4 > * { min-width: 0; }   /* dozvoli da grid ćelije padnu ispod min-content */
 ```
 
-> `minmax(0,1fr)` / `min-width:0` na grid ćelijama sprečava da slika/tekst „rastegnu"
-> kolonu preko kontejnera (default grid track ne ide ispod `min-content`).
+> `min-width:0` / `minmax(0,1fr)` sprečava da slika/tekst „rastegnu" kolonu preko
+> kontejnera (default grid track ne ide ispod `min-content`).
 
 ### Provera u Chrome DevTools (MCP)
 
 Pravi telefon emuliraj (ne samo `resize_page` — MCP browser ima ~500px „pod"):
 
 ```
-mcp__chrome-devtools__emulate        viewport = "390x844x3,mobile,touch"
+mcp__chrome-devtools__emulate        viewport = "412x915x2.6,mobile,touch"
 mcp__chrome-devtools__navigate_page  type = reload
 mcp__chrome-devtools__evaluate_script
-  () => ({ w: window.innerWidth,
-           sw: document.documentElement.scrollWidth,
+  () => ({ scale: window.visualViewport.scale,
+           w: window.innerWidth,
            overflow: document.documentElement.scrollWidth - window.innerWidth })
 ```
 
-Ispravno stanje: `w = 740`, `overflow = 0` (i `visualViewport.scale < 1`).
-Loše stanje (pre fiksa): `overflow > 0`.
+- **Pristup B (pravi mobilni, cilj):** `scale = 1`, `w = širina ekrana` (npr. 412), `overflow = 0`.
+- **Pristup A (skalirano):** `scale < 1` (npr. 0.56), `w = 740`, `overflow = 0`.
+- **Loše (pre fiksa):** `overflow > 0` — sadržaj se preliva.
 
 ---
 
@@ -451,8 +491,10 @@ Loše stanje (pre fiksa): `overflow > 0`.
    (`background-size` + `background-position` iterativno).
 5. **Petlja poređenja**: Chrome DevTools `resize_page(740,…)` → `take_screenshot
    fullPage` → side-by-side combo → koriguj → ponovi dok nije identično.
-6. **Mobilni viewport**: za dizajn fiksne širine stavi `<meta name="viewport"
-   content="width=<širina_dizajna>">` (npr. `740`) da se cela stranica skalira na ekran,
-   bez horizontalnog overflow-a (vidi §6b). + `overflow-x:hidden` i `min-width:0` na grid.
+6. **Mobilni prikaz** (vidi §6b): dva pristupa — **A** `width=<dizajn>` (npr. 740) =
+   verno mockup-u ali skalirano/„odzumirano"; **B (preporuka)** `width=device-width` +
+   responsive doterivanje u `@media (max-width:740px)` sa `vw` fontovima i relativnom hero
+   pozadinom = popunjava ekran, čitljivo (`scale=1`), desktop ostaje 1:1. Uvek +
+   `overflow-x:hidden` i `min-width:0` na grid.
 7. **Pravilo**: struktura/tekst/dugmad = HTML/CSS; fotografije = isečci iz slike.
 8. Privremene fajlove drži van projekta (scratchpad), u repo idu samo `assets/` + `index.html`.
