@@ -378,6 +378,63 @@ CSS pravila za isečke (da se uklope u kartice):
 
 ---
 
+## 6b. Mobilni viewport — fiksna širina mockup-a (VAŽNO)
+
+**Najčešća zamka za mobilni.** Mockup (`app.jpg`) je dizajn **fiksne širine** (740px):
+font-ovi, naslovi i mreže (4 kolone) su u fiksnim pikselima. Ako ostaviš podrazumevani
+viewport:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+…telefon (npr. 390px širine) pokušava da nagura dizajn od 740px u 390px. Fiksne px
+veličine ne mogu da se skupe, pa sadržaj **prelazi preko ivice ekrana** → deo stranice
+je odsečen i može da se „zoom-out"-uje (horizontalni overflow).
+
+### Rešenje — reci telefonu da renderuje na širini dizajna
+
+```html
+<meta name="viewport" content="width=740" />
+```
+
+Mobilni browser tada postavi layout na **740px** (širina dizajna) i **automatski
+skalira celu stranicu** da stane na ekran. Rezultat: identične proporcije kao mockup,
+samo umanjeno (skala ≈ `širina_ekrana / 740`, npr. ~0.53 na 390px telefonu).
+**Bez horizontalnog overflow-a, bez odsecanja.**
+
+> Desktop nije pogođen: `width=740` meta se na desktopu ignoriše; tamo radi
+> `.wrap { max-width:740px }` koji centrira sadržaj.
+
+### Sigurnosna mreža (da overflow nikad nije moguć)
+
+```css
+html, body { overflow-x: hidden; }
+.grid4, .stats { min-width: 0; }
+.grid4 > * { min-width: 0; }   /* dozvoli da grid ćelije padnu ispod min-content */
+```
+
+> `minmax(0,1fr)` / `min-width:0` na grid ćelijama sprečava da slika/tekst „rastegnu"
+> kolonu preko kontejnera (default grid track ne ide ispod `min-content`).
+
+### Provera u Chrome DevTools (MCP)
+
+Pravi telefon emuliraj (ne samo `resize_page` — MCP browser ima ~500px „pod"):
+
+```
+mcp__chrome-devtools__emulate        viewport = "390x844x3,mobile,touch"
+mcp__chrome-devtools__navigate_page  type = reload
+mcp__chrome-devtools__evaluate_script
+  () => ({ w: window.innerWidth,
+           sw: document.documentElement.scrollWidth,
+           overflow: document.documentElement.scrollWidth - window.innerWidth })
+```
+
+Ispravno stanje: `w = 740`, `overflow = 0` (i `visualViewport.scale < 1`).
+Loše stanje (pre fiksa): `overflow > 0`.
+
+---
+
 ## 7. Cheat sheet za sledeći sajt
 
 1. **Dimenzije** `app.jpg` → renderuj stranicu na toj širini (`max-width`), 1:1.
@@ -391,5 +448,8 @@ CSS pravila za isečke (da se uklope u kartice):
    (`background-size` + `background-position` iterativno).
 5. **Petlja poređenja**: Chrome DevTools `resize_page(740,…)` → `take_screenshot
    fullPage` → side-by-side combo → koriguj → ponovi dok nije identično.
-6. **Pravilo**: struktura/tekst/dugmad = HTML/CSS; fotografije = isečci iz slike.
-7. Privremene fajlove drži van projekta (scratchpad), u repo idu samo `assets/` + `index.html`.
+6. **Mobilni viewport**: za dizajn fiksne širine stavi `<meta name="viewport"
+   content="width=<širina_dizajna>">` (npr. `740`) da se cela stranica skalira na ekran,
+   bez horizontalnog overflow-a (vidi §6b). + `overflow-x:hidden` i `min-width:0` na grid.
+7. **Pravilo**: struktura/tekst/dugmad = HTML/CSS; fotografije = isečci iz slike.
+8. Privremene fajlove drži van projekta (scratchpad), u repo idu samo `assets/` + `index.html`.
