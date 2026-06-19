@@ -116,6 +116,8 @@
   h2.title{font-size:24px;font-weight:800;letter-spacing:.4px;margin-bottom:18px;}
 
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
+  /* kvarovi karusel: na desktopu obična mreža 4 kolone, duplikati skriveni */
+  .fault.dup{display:none;}
   .fault{
     background:var(--card);border-radius:14px;padding:16px 8px 18px;text-align:center;
     box-shadow:0 6px 16px rgba(13,39,71,.06);border:1px solid #eef1f5;
@@ -173,8 +175,8 @@
       background-position:right -6vw;
       padding:24px 18px 22px;
     }
-    .hero h1{font-size:8vw;}
-    .hero h1 .big{font-size:12.5vw;}
+    .hero h1{font-size:6.6vw;}
+    .hero h1 .big{font-size:10.2vw;}
     .hero .lead{font-size:4.2vw;max-width:62%;}
     .checks li{font-size:4vw;}
     .hero-btns{gap:10px;}
@@ -183,6 +185,30 @@
     .btn small{font-size:3vw;}
     .btn .bi{width:30px;height:30px;}
     h2.title{font-size:6vw;}
+
+    /* NAJČEŠĆI KVAROVI -> pokretni karusel (2 kartice vidljive + peek) */
+    .faults-viewport{overflow:hidden;}
+    .faults-track{
+      display:flex;
+      width:max-content;
+      gap:11px;
+      animation:faultsScroll 18s linear infinite;
+      will-change:transform;
+    }
+    .faults-track .fault{flex:0 0 43vw;}
+    .faults-track .fault.dup{display:block;}
+    /* pauza na dodir/hover da se može pročitati */
+    .faults-viewport:hover .faults-track,
+    .faults-viewport:active .faults-track{animation-play-state:paused;}
+  }
+
+  /* pomeranje udesno; sadržaj ulazi sa leve, seamless loop (4 kartice = 1 ciklus) */
+  @keyframes faultsScroll{
+    from{transform:translateX(calc((43vw + 11px) * -4));}
+    to  {transform:translateX(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .faults-track{animation:none;}
   }
 </style>
 </head>
@@ -251,30 +277,41 @@
   <!-- NAJČEŠĆI KVAROVI -->
   <section class="block">
     <h2 class="title">NAJČEŠĆI KVAROVI</h2>
-    <div class="grid4">
-      <div class="fault">
-        <div class="fimg">
-          <img src="assets/grejac.png" alt="Grejač" />
+    <div class="faults-viewport">
+      <div class="faults-track grid4">
+        <div class="fault">
+          <div class="fimg"><img src="assets/grejac.png" alt="Grejač" /></div>
+          <b>GREJAČ</b><span>Bojler ne greje vodu</span>
         </div>
-        <b>GREJAČ</b><span>Bojler ne greje vodu</span>
-      </div>
-      <div class="fault">
-        <div class="fimg">
-          <img src="assets/termostat.png" alt="Termostat" />
+        <div class="fault">
+          <div class="fimg"><img src="assets/termostat.png" alt="Termostat" /></div>
+          <b>TERMOSTAT</b><span>Ne održava zadatu temperaturu</span>
         </div>
-        <b>TERMOSTAT</b><span>Ne održava zadatu temperaturu</span>
-      </div>
-      <div class="fault">
-        <div class="fimg">
-          <img src="assets/ventil.png" alt="Sigurnosni ventil" />
+        <div class="fault">
+          <div class="fimg"><img src="assets/ventil.png" alt="Sigurnosni ventil" /></div>
+          <b>SIGURNOSNI VENTIL</b><span>Curenje vode iz ventila</span>
         </div>
-        <b>SIGURNOSNI VENTIL</b><span>Curenje vode iz ventila</span>
-      </div>
-      <div class="fault">
-        <div class="fimg">
-          <img src="assets/elektronika.png" alt="Elektronika" />
+        <div class="fault">
+          <div class="fimg"><img src="assets/elektronika.png" alt="Elektronika" /></div>
+          <b>ELEKTRONIKA</b><span>Greške na displeju i elektronici</span>
         </div>
-        <b>ELEKTRONIKA</b><span>Greške na displeju i elektronici</span>
+        <!-- duplikati (samo za seamless loop na mobilnom) -->
+        <div class="fault dup" aria-hidden="true">
+          <div class="fimg"><img src="assets/grejac.png" alt="" /></div>
+          <b>GREJAČ</b><span>Bojler ne greje vodu</span>
+        </div>
+        <div class="fault dup" aria-hidden="true">
+          <div class="fimg"><img src="assets/termostat.png" alt="" /></div>
+          <b>TERMOSTAT</b><span>Ne održava zadatu temperaturu</span>
+        </div>
+        <div class="fault dup" aria-hidden="true">
+          <div class="fimg"><img src="assets/ventil.png" alt="" /></div>
+          <b>SIGURNOSNI VENTIL</b><span>Curenje vode iz ventila</span>
+        </div>
+        <div class="fault dup" aria-hidden="true">
+          <div class="fimg"><img src="assets/elektronika.png" alt="" /></div>
+          <b>ELEKTRONIKA</b><span>Greške na displeju i elektronici</span>
+        </div>
       </div>
     </div>
   </section>
