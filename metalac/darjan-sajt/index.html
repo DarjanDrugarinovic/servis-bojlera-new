@@ -157,11 +157,18 @@
 
   /* ---------- MOBILNI (uži ekrani) ---------- */
   @media (max-width:740px){
-    .hero h1{font-size:6vw;}
-    .hero h1 .big{font-size:9.5vw;}
-    .hero .lead{font-size:3.8vw;max-width:100%;}
-    .checks li{font-size:3.6vw;}
-    .hero-btns{gap:10px;flex-direction:column;width:100%;}
+    .hero{
+      min-height:auto;
+      background-size:64% auto;
+      background-position:right 6px;
+      padding:22px 20px 24px;
+    }
+    .hero h1{font-size:7vw;}
+    .hero h1 .big{font-size:11vw;}
+    .hero .lead{font-size:3.8vw;max-width:54%;}
+    .checks{margin-top:16px;}
+    .checks li{font-size:3.6vw;max-width:58%;}
+    .hero-btns{margin-top:26px;gap:10px;flex-direction:column;width:100%;}
     .btn{padding:10px 12px;}
     .btn b{font-size:3.8vw;}
     .btn .bi{width:26px;height:26px;}
