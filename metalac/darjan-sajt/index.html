@@ -192,8 +192,10 @@
     .faults-track .fault .fimg{height:100px;}
     .faults-track .fault .fimg img{max-height:100px;}
     .faults-track .fault.dup{display:block;}
-    .faults-viewport:hover .faults-track,
-    .faults-viewport:active .faults-track{animation-play-state:paused;}
+    /* pauza samo na uređajima sa mišem (ne na dodir) */
+    @media (hover:hover){
+      .faults-viewport:hover .faults-track{animation-play-state:paused;}
+    }
 
     .models-viewport{overflow:hidden;}
     .models-track{
@@ -207,8 +209,10 @@
     .models-track .model .mimg{height:130px;}
     .models-track .model .mimg img{max-height:130px;}
     .models-track .model.dup{display:block;}
-    .models-viewport:hover .models-track,
-    .models-viewport:active .models-track{animation-play-state:paused;}
+    /* pauza samo na uređajima sa mišem (ne na dodir) */
+    @media (hover:hover){
+      .models-viewport:hover .models-track{animation-play-state:paused;}
+    }
   }
 
   /* pomeranje udesno; seamless loop (4 kartice = 1 ciklus) */
