@@ -185,9 +185,9 @@
       animation:faultsScroll 18s linear infinite;
       will-change:transform;
     }
-    .faults-track .fault{flex:0 0 33vw;}
-    .faults-track .fault .fimg{height:130px;}
-    .faults-track .fault .fimg img{max-height:130px;}
+    .faults-track .fault{flex:0 0 36vw;}
+    .faults-track .fault .fimg{height:100px;}
+    .faults-track .fault .fimg img{max-height:100px;}
     .faults-track .fault.dup{display:block;}
     .faults-viewport:hover .faults-track,
     .faults-viewport:active .faults-track{animation-play-state:paused;}
@@ -200,7 +200,7 @@
       animation:modelsScroll 18s linear infinite;
       will-change:transform;
     }
-    .models-track .model{flex:0 0 33vw;}
+    .models-track .model{flex:0 0 36vw;}
     .models-track .model .mimg{height:130px;}
     .models-track .model .mimg img{max-height:130px;}
     .models-track .model.dup{display:block;}
@@ -210,12 +210,12 @@
 
   /* pomeranje udesno; seamless loop (4 kartice = 1 ciklus) */
   @keyframes faultsScroll{
-    from{transform:translateX(calc((33vw + 11px) * -4));}
+    from{transform:translateX(calc((36vw + 11px) * -4));}
     to  {transform:translateX(0);}
   }
   @keyframes modelsScroll{
     from{transform:translateX(0);}
-    to  {transform:translateX(calc((33vw + 11px) * -6));}
+    to  {transform:translateX(calc((36vw + 11px) * -6));}
   }
   @media (prefers-reduced-motion: reduce){
     .faults-track,
