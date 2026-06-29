@@ -2,8 +2,8 @@
 
 Zajednički preduslovi za sve procese obrade slika na ovom projektu
 (`servis-bojlera-new`). Na ovaj fajl se pozivaju:
-[`hero-pozadina.md`](./hero-pozadina.md), [`transparentna-pozadina.md`](./transparentna-pozadina.md)
-i [`pixel-perfect-sajt.md`](./pixel-perfect-sajt.md).
+[`hero-pozadina.md`](./hero-pozadina.md), [`transparentna-pozadina.md`](./transparentna-pozadina.md),
+[`pixel-perfect-sajt.md`](./pixel-perfect-sajt.md) i [`kompresija-slika.md`](./kompresija-slika.md).
 
 > Platforma: **Windows 11**, shell **PowerShell** (primarni) + **Git Bash**.
 > Python skripte se pokreću kroz `python`, ostalo kroz PowerShell.
