@@ -108,7 +108,8 @@
   h2.title{font-size:22px;font-weight:800;letter-spacing:.4px;margin-bottom:14px;}
 
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
-  .fault.dup{display:none;}
+  .models-track.grid4{grid-template-columns:repeat(3,1fr);}
+  .fault.dup, .model.dup{display:none;}
   .fault, .model{
     background:var(--card);border-radius:14px;padding:16px 8px 18px;text-align:center;
     box-shadow:0 6px 16px rgba(13,39,71,.06);border:1px solid #eef1f5;
@@ -150,7 +151,7 @@
   /* ---------- FOOTER ---------- */
   footer{padding:24px 16px 28px;}
   .fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-  .fitem{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+  .fitem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;}
   .fitem .fi{width:24px;height:24px;}
   .fitem b{font-size:11px;font-weight:800;letter-spacing:.3px;line-height:1.25;}
   .fitem span{font-size:10px;color:var(--muted);line-height:1.35;}
@@ -184,19 +185,41 @@
       animation:faultsScroll 18s linear infinite;
       will-change:transform;
     }
-    .faults-track .fault{flex:0 0 43vw;}
+    .faults-track .fault{flex:0 0 33vw;}
+    .faults-track .fault .fimg{height:130px;}
+    .faults-track .fault .fimg img{max-height:130px;}
     .faults-track .fault.dup{display:block;}
     .faults-viewport:hover .faults-track,
     .faults-viewport:active .faults-track{animation-play-state:paused;}
+
+    .models-viewport{overflow:hidden;}
+    .models-track{
+      display:flex;
+      width:max-content;
+      gap:11px;
+      animation:modelsScroll 18s linear infinite;
+      will-change:transform;
+    }
+    .models-track .model{flex:0 0 33vw;}
+    .models-track .model .mimg{height:130px;}
+    .models-track .model .mimg img{max-height:130px;}
+    .models-track .model.dup{display:block;}
+    .models-viewport:hover .models-track,
+    .models-viewport:active .models-track{animation-play-state:paused;}
   }
 
   /* pomeranje udesno; seamless loop (4 kartice = 1 ciklus) */
   @keyframes faultsScroll{
-    from{transform:translateX(calc((43vw + 11px) * -4));}
+    from{transform:translateX(calc((33vw + 11px) * -4));}
     to  {transform:translateX(0);}
   }
+  @keyframes modelsScroll{
+    from{transform:translateX(0);}
+    to  {transform:translateX(calc((33vw + 11px) * -6));}
+  }
   @media (prefers-reduced-motion: reduce){
-    .faults-track{animation:none;}
+    .faults-track,
+    .models-track{animation:none;}
   }
 </style>
 </head>
@@ -263,37 +286,37 @@
     <div class="faults-viewport">
       <div class="faults-track grid4">
         <a class="fault" href="kvarovi/grejac.html">
-          <div class="fimg"><img src="assets/grejac.png" alt="Grejač" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/grejac.png" alt="Grejač" /></div>
           <b>GREJAČ</b><span>Bojler ne greje vodu</span>
         </a>
         <a class="fault" href="kvarovi/termostat.html">
-          <div class="fimg"><img src="assets/termostat.png" alt="Termostat" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/termostat.png" alt="Termostat" /></div>
           <b>TERMOSTAT</b><span>Ne održava temperaturu</span>
         </a>
         <a class="fault" href="kvarovi/sigurnosni-ventil.html">
-          <div class="fimg"><img src="assets/ventil.png" alt="Sigurnosni ventil" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/sigurnosni-ventil.png" alt="Sigurnosni ventil" /></div>
           <b>SIGURNOSNI VENTIL</b><span>Curenje vode iz ventila</span>
         </a>
-        <a class="fault" href="kvarovi/elektronika.html">
-          <div class="fimg"><img src="assets/elektronika.png" alt="Elektronika" /></div>
-          <b>ELEKTRONIKA</b><span>Greške na displeju</span>
+        <a class="fault" href="kvarovi/curenje.html">
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/curenje-creva.png" alt="Curenje vode" /></div>
+          <b>CURENJE VODE</b><span>Curenje na priključcima</span>
         </a>
         <!-- duplikati (samo za seamless loop na mobilnom) -->
         <a class="fault dup" href="kvarovi/grejac.html" aria-hidden="true" tabindex="-1">
-          <div class="fimg"><img src="assets/grejac.png" alt="" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/grejac.png" alt="" /></div>
           <b>GREJAČ</b><span>Bojler ne greje vodu</span>
         </a>
         <a class="fault dup" href="kvarovi/termostat.html" aria-hidden="true" tabindex="-1">
-          <div class="fimg"><img src="assets/termostat.png" alt="" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/termostat.png" alt="" /></div>
           <b>TERMOSTAT</b><span>Ne održava temperaturu</span>
         </a>
         <a class="fault dup" href="kvarovi/sigurnosni-ventil.html" aria-hidden="true" tabindex="-1">
-          <div class="fimg"><img src="assets/ventil.png" alt="" /></div>
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/sigurnosni-ventil.png" alt="" /></div>
           <b>SIGURNOSNI VENTIL</b><span>Curenje vode iz ventila</span>
         </a>
-        <a class="fault dup" href="kvarovi/elektronika.html" aria-hidden="true" tabindex="-1">
-          <div class="fimg"><img src="assets/elektronika.png" alt="" /></div>
-          <b>ELEKTRONIKA</b><span>Greške na displeju</span>
+        <a class="fault dup" href="kvarovi/curenje.html" aria-hidden="true" tabindex="-1">
+          <div class="fimg"><img src="assets/danilo/najcesci-kvarovi/curenje-creva.png" alt="" /></div>
+          <b>CURENJE VODE</b><span>Curenje na priključcima</span>
         </a>
       </div>
     </div>
@@ -302,11 +325,22 @@
   <!-- POPULARNI MODELI -->
   <section class="block">
     <h2 class="title">POPULARNI MODELI</h2>
-    <div class="grid4">
-      <div class="model"><div class="mimg"><img src="assets/hydra.png" alt="Hydra bojler" /></div><b>HYDRA</b></div>
-      <div class="model"><div class="mimg"><img src="assets/sirius.png" alt="Sirius bojler" /></div><b>SIRIUS</b></div>
-      <div class="model"><div class="mimg"><img src="assets/orion.png" alt="Orion bojler" /></div><b>ORION</b></div>
-      <div class="model"><div class="mimg"><img src="assets/taurus.png" alt="Taurus bojler" /></div><b>TAURUS</b></div>
+    <div class="models-viewport">
+      <div class="models-track grid4">
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/hidra/hidra.png" alt="Hidra bojler" /></div><b>HIDRA</b></div>
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/sirius/sirius.png" alt="Sirius bojler" /></div><b>SIRIUS</b></div>
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/aurora/aurora.png" alt="Aurora bojler" /></div><b>AURORA</b></div>
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/ceramic/ceramic.png" alt="Ceramic bojler" /></div><b>CERAMIC</b></div>
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/digital/digital.png" alt="Digital bojler" /></div><b>DIGITAL</b></div>
+        <div class="model"><div class="mimg"><img src="assets/danilo/bojleri/flat/flat.png" alt="Flat bojler" /></div><b>FLAT</b></div>
+        <!-- duplikati (samo za seamless loop na mobilnom) -->
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/hidra/hidra.png" alt="" /></div><b>HIDRA</b></div>
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/sirius/sirius.png" alt="" /></div><b>SIRIUS</b></div>
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/aurora/aurora.png" alt="" /></div><b>AURORA</b></div>
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/ceramic/ceramic.png" alt="" /></div><b>CERAMIC</b></div>
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/digital/digital.png" alt="" /></div><b>DIGITAL</b></div>
+        <div class="model dup" aria-hidden="true"><div class="mimg"><img src="assets/danilo/bojleri/flat/flat.png" alt="" /></div><b>FLAT</b></div>
+      </div>
     </div>
   </section>
 
